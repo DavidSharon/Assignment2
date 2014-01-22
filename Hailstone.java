@@ -10,7 +10,10 @@ import acm.program.*;
 
 public class Hailstone extends ConsoleProgram {
 	public void run() {
-		int a= readInt("Enter a number");
+		int a= readInt("Enter a positive integer");
+		while (a<1) {
+			a= readInt("Enter a positive integer");
+		}
 		int i= 0;
 		while (a != 1) {
 			i++;
@@ -25,7 +28,7 @@ public class Hailstone extends ConsoleProgram {
 	private int takeHalf(int n) {
 		int original= n;
 		n /= 2;
-		println(original +" is even so i take half: "+ n);
+		println(original +" is even so I take half: "+ n);
 		return n;
 	}
 	
