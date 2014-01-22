@@ -23,11 +23,17 @@ public class Hailstone extends ConsoleProgram {
 		println ("The process took "+i+" to reach 1");
 	}
 	private int takeHalf(int n) {
-		return n /= 2;
+		int original= n;
+		n /= 2;
+		println(original +" is even so i take half: "+ n);
+		return n;
 	}
 	
 	private int make3nPlusOne(int y) {
-		return y = 3*y +1;
+		int original= y;
+		y = 3*y +1;
+		println(original +" is odd, so I make 3n+1: "+ y);
+		return y;
 	}
 }
 
