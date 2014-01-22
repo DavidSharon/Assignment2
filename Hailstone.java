@@ -23,7 +23,7 @@ public class Hailstone extends ConsoleProgram {
 				a=make3nPlusOne(a);
 			}
 		}
-		println ("The process took "+i+" to reach 1");
+		println ("The process took "+i+" steps to reach 1");
 	}
 	private int takeHalf(int n) {
 		int original= n;
