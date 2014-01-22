@@ -15,9 +15,9 @@ public class Hailstone extends ConsoleProgram {
 		while (a != 1) {
 			i++;
 			if (a%2==0) {
-				takeHalf(a);
+				a=takeHalf(a);
 			} else {
-				make3nPlusOne(a);
+				a=make3nPlusOne(a);
 			}
 		}
 		println ("The process took "+i+" to reach 1");
