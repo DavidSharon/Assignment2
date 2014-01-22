@@ -10,9 +10,9 @@ import acm.program.*;
 
 public class Hailstone extends ConsoleProgram {
 	public void run() {
-		int a= readInt("Enter a positive integer");
+		int a= readInt("Enter a positive integer: ");
 		while (a<1) {
-			a= readInt("Enter a positive integer");
+			a= readInt("Enter a positive integer: ");
 		}
 		int i= 0;
 		while (a != 1) {
