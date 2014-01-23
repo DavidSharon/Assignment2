@@ -6,17 +6,29 @@
  * This file is the starter file for the FindRange problem.
  */
 
+/* Finds the smallest and largest numbers from a range of integers entered by user.
+ * Stops program when SENTINEL entered
+ */
+
 import acm.program.*;
 
 public class FindRange extends ConsoleProgram {
 	public void run() {
-		/* You fill this in */
+		/* Variable to hold latest number stored */
 		int userInput =0;
+		
+		/* Variable to hold highest number entered so far */
 		int userMax=0;
+		
+		/* Variable to hold lowest number entered so far */
 		int userMin=0;
+		
 		println("This program finds the largest and smallest numbers");
 		println("Enter "+SENTINEL+" anytime to stop program");
 		userInput=getNumFromUser(userInput);
+		
+		/* Loop that continues until SENTINEL is entered and keeps track of lowest and highest numbers entered so far */
+		
 		while (userInput != SENTINEL) {
 			if (userInput>userMax) {
 				userMax=userInput;
@@ -27,8 +39,11 @@ public class FindRange extends ConsoleProgram {
 			}
 			userInput=getNumFromUser(userInput);
 		}
+		
+		/*Checks that SENTINEL not entered in first trial and, if not,
+		 * shows smallest and highest number entered so far */
 		if (userMax==userMin && userMax==SENTINEL) {
-			println (SENTINEL + "entered as first number so program not run");
+			println (SENTINEL + " entered as first number so program not run");
 		}
 		else{
 			println ("Smallest number: "+userMin);
@@ -36,10 +51,13 @@ public class FindRange extends ConsoleProgram {
 		}
 	}
 	
+	/* Gets integer from user and returns that integer */
+	
 	private int getNumFromUser(int a) {
 		int getNum= readInt ("Please enter an integer: ");
 		return getNum;
 	}
-
+	
+	/*Constant that sets number that indicates user has entered entire range */
 	private static final int SENTINEL=0;
 }
