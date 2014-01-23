@@ -16,16 +16,16 @@ public class FindRange extends ConsoleProgram {
 	public void run() {
 		/* Variable to hold latest number stored */
 		int userInput =0;
-		
-		/* Variable to hold highest number entered so far */
-		int userMax=0;
-		
-		/* Variable to hold lowest number entered so far */
-		int userMin=0;
-		
+
 		println("This program finds the largest and smallest numbers");
 		println("Enter "+SENTINEL+" anytime to stop program");
 		userInput=getNumFromUser(userInput);
+		
+		/* Variable to hold lowest number entered so far */
+		int userMin=userInput;
+		
+		/* Variable to hold highest number entered so far */
+		int userMax=userInput;
 		
 		/* Loop that continues until SENTINEL is entered and keeps track of lowest and highest numbers entered so far */
 		
