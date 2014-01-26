@@ -29,15 +29,15 @@ public class Pyramid extends GraphicsProgram {
 		/* You fill this in. */
 		double firstBrickX=0;
 		for (int row=1; row<=BRICKS_IN_BASE; row++) {
-			for (int column=1; column<=BRICKS_IN_BASE; column++) {
+			for (int column=1; column<=(BRICKS_IN_BASE-(row-1)); column++) {
 				firstBrickX= computeFirstBrickX(row);
 				buildBrick(row,column,firstBrickX);
 			}
 		}
 	}
 	
-	private double computeFirstBrickX(double start) {
-		start= (getWidth()-BRICKS_IN_BASE*BRICK_WIDTH)/2;
+	private double computeFirstBrickX(double row) {
+		double start= getWidth()-((BRICKS_IN_BASE)-(row-1))*(BRICK_WIDTH)/2;
 		return(start);
 	}
 	
