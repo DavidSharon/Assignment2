@@ -27,9 +27,10 @@ public class Pyramid extends GraphicsProgram {
 	
 	public void run() {
 		/* You fill this in. */
-		Double firstBrickX= computeFirstBrickX(0);
-		for (int row=0; row<BRICKS_IN_BASE; row++) {
-			for (int column=0; column<BRICKS_IN_BASE; column++) {
+		double firstBrickX=0;
+		for (int row=1; row<=BRICKS_IN_BASE; row++) {
+			for (int column=1; column<=BRICKS_IN_BASE; column++) {
+				firstBrickX= computeFirstBrickX(row);
 				buildBrick(row,column,firstBrickX);
 			}
 		}
