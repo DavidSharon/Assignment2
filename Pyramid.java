@@ -27,6 +27,23 @@ public class Pyramid extends GraphicsProgram {
 	
 	public void run() {
 		/* You fill this in. */
+		Double firstBrickX= computeFirstBrickX(0);
+		for (int row=0; row<BRICKS_IN_BASE; row++) {
+			for (int column=0; column<BRICKS_IN_BASE; column++) {
+				buildBrick(row,column,firstBrickX);
+			}
+		}
+	}
+	
+	private double computeFirstBrickX(double start) {
+		start= (getWidth()-BRICKS_IN_BASE*BRICK_WIDTH)/2;
+		return(start);
+	}
+	
+	private void buildBrick (double row, double column, double firstBrickX) {
+		GRect brick= new GRect (firstBrickX+BRICK_WIDTH*column,row*BRICK_HEIGHT,BRICK_WIDTH,BRICK_HEIGHT);
+		brick.setFilled(false);
+		brick.setColor(Color.black);
 	}
 }
 
