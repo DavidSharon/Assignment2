@@ -21,8 +21,8 @@ public class Target extends GraphicsProgram {
 		outerCircle.setColor(Color.RED);
 		GOval innerCircle= new GOval (midXScreen-INNERCIRCLERADIUS,midYScreen-INNERCIRCLERADIUS,
 									midXScreen+INNERCIRCLERADIUS,midYScreen+INNERCIRCLERADIUS);
-		outerCircle.setFilled(true);
-		outerCircle.setColor(Color.RED)
+		innerCircle.setFilled(true);
+		innerCircle.setColor(Color.RED);
 	}
 	
 	private final static double LASTCIRCLERADIUS=72.0;
