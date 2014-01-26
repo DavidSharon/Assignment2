@@ -44,6 +44,7 @@ public class Pyramid extends GraphicsProgram {
 		GRect brick= new GRect (firstBrickX+BRICK_WIDTH*column,row*BRICK_HEIGHT,BRICK_WIDTH,BRICK_HEIGHT);
 		brick.setFilled(false);
 		brick.setColor(Color.black);
+		add(brick);
 	}
 }
 
