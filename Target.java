@@ -23,6 +23,8 @@ public class Target extends GraphicsProgram {
 									midXScreen+INNERCIRCLERADIUS,midYScreen+INNERCIRCLERADIUS);
 		innerCircle.setFilled(true);
 		innerCircle.setColor(Color.RED);
+		add(outerCircle);
+		add(innerCircle);
 	}
 	
 	private final static double LASTCIRCLERADIUS=72.0;
