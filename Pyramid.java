@@ -10,6 +10,12 @@
  * to change accordingly.
  */
 
+
+/* Creates a pyramid based on a number of constants: number of bricks in base
+ * brick width and brick height.
+ * 
+ * For some reason, doesn't center on my screen. Can you help me fix this? :) 
+ */
 import acm.graphics.*;
 import acm.program.*;
 import java.awt.*;
@@ -27,7 +33,7 @@ public class Pyramid extends GraphicsProgram {
 	
 	public void run() {
 		
-		/* Intializing starting point of first brick */
+		/* Intializing X starting point of first brick */
 		
 		double firstBrickX=0;
 		
