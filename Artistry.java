@@ -39,6 +39,7 @@ public class Artistry extends GraphicsProgram {
 	private int introRequestParamaters(int a) {
 		explainArtIsRandom();
 		int userInput= requestNumberOfShapes(a);
+		cleanScreen();
 		return(userInput);
 	}
 
@@ -52,7 +53,6 @@ public class Artistry extends GraphicsProgram {
 	}
 
 	private int requestNumberOfShapes (int a) {
-		cleanScreen();
 		int userShapeInput= readInt ("Enter number of shapes your heart desires: ");
 		println ("I am going to give you 300x that number, i.e., "+ userShapeInput*300);
 		pause(LARGEPAUSE*2);
