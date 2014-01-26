@@ -9,8 +9,8 @@
  */
 import acm.graphics.GOval;
 import acm.graphics.GRect;
+import acm.graphics.GLabel;
 import acm.program.*;
-/*Imported util for RandomGenerator Class */
 import acm.util.*;
 import java.awt.Color;
 
@@ -30,7 +30,8 @@ import java.awt.Color;
 
 public class Artistry extends GraphicsProgram {
 	public void run() {
-		int numberOfShapes= introRequestParamaters(numberOfShapes);
+		int x=0;
+		int numberOfShapes= introRequestParamaters(x);
 		generateShapesBasedOnParamaters(numberOfShapes);
 		signPicture();
 	}
@@ -59,7 +60,7 @@ public class Artistry extends GraphicsProgram {
 		return (userShapeInput*300);
 	}
 
-	private int generateShapesBasedOnParamaters(int shapes) {
+	private void generateShapesBasedOnParamaters(int shapes) {
 		int screenWidth =getWidth();
 		int screenHeight= getHeight();
 		for (int i=0; i<shapes; i++){
@@ -79,7 +80,7 @@ public class Artistry extends GraphicsProgram {
 		Color rectColor= rgen.nextColor();
 		rect.setFillColor(Color.BLUE);
 		add(rect);
-		break;
+		return;
 	}
 
 	private void createOval(int x, int y) {
@@ -91,7 +92,6 @@ public class Artistry extends GraphicsProgram {
 		oval.setFilled(true);
 		oval.setFillColor(Color.BLUE);
 		add(oval);
-		break;
 	}
 	
 	private void signPicture() {
@@ -113,10 +113,8 @@ public class Artistry extends GraphicsProgram {
 	private RandomGenerator rgen = RandomGenerator.getInstance();
 
 	private final static int SMALLNUMBERLIMIT=10;
-	private final static int LARGENUMBERLIMIT=50;
 	private final static int SMALLPAUSE=20;
 	private final static int LARGEPAUSE=1000;	
 
 
-}
 }
