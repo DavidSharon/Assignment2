@@ -17,17 +17,22 @@ import java.awt.*;
 public class Pyramid extends GraphicsProgram {
 
 	/** Width of each brick in pixels */
-	private static final int BRICK_WIDTH = 10;
+	private static final int BRICK_WIDTH = 15;
 
 	/** Height of each brick in pixels */
-	private static final int BRICK_HEIGHT = 5;
+	private static final int BRICK_HEIGHT = 10;
 
 	/** Number of bricks in the base of the pyramid */
-	private static final int BRICKS_IN_BASE = 3;
+	private static final int BRICKS_IN_BASE = 30;
 	
 	public void run() {
-		/* You fill this in. */
+		
+		/* Intializing starting point of first brick */
+		
 		double firstBrickX=0;
+		
+		/*Need double counter to know which row and column I am */
+		
 		for (int row=1; row<=BRICKS_IN_BASE; row++) {
 			for (int column=1; column<=(BRICKS_IN_BASE-(row-1)); column++) {
 				firstBrickX= computeFirstBrickX(row);
@@ -36,10 +41,14 @@ public class Pyramid extends GraphicsProgram {
 		}
 	}
 	
+	/* Computes the location of what would be the first Brick X in a row */
+	
 	private double computeFirstBrickX(double row) {
 		double start= getWidth()-((BRICKS_IN_BASE)-(row-1))*(BRICK_WIDTH)/2;
 		return(start);
 	}
+	
+	/*Creates the brick based on the row and column */
 	
 	private void buildBrick (double row, double column, double firstBrickX) {
 		double topOfScreen=getHeight();
