@@ -38,7 +38,8 @@ public class Artistry extends GraphicsProgram {
 
 	private int introRequestParamaters(int a) {
 		explainArtIsRandom();
-		return requestNumberOfShapes(a);
+		int userInput= requestNumberOfShapes(a);
+		return(userInput);
 	}
 
 	private void explainArtIsRandom() {
