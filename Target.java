@@ -19,11 +19,16 @@ public class Target extends GraphicsProgram {
 									  midXScreen+LASTCIRCLERADIUS,midYScreen+LASTCIRCLERADIUS);
 		outerCircle.setFilled(true);
 		outerCircle.setColor(Color.RED);
+		GOval midCircle= new GOval (midXScreen-MIDCIRCLERADIUS,midYScreen-MIDCIRCLERADIUS,
+				midXScreen+MIDCIRCLERADIUS,midYScreen+MIDCIRCLERADIUS);
+		midCircle.setFilled(true);
+		midCircle.setColor(Color.WHITE);
 		GOval innerCircle= new GOval (midXScreen-INNERCIRCLERADIUS,midYScreen-INNERCIRCLERADIUS,
 									midXScreen+INNERCIRCLERADIUS,midYScreen+INNERCIRCLERADIUS);
 		innerCircle.setFilled(true);
 		innerCircle.setColor(Color.RED);
 		add(outerCircle);
+		add(midCircle);
 		add(innerCircle);
 	}
 	
