@@ -16,15 +16,15 @@ public class Target extends GraphicsProgram {
 		double midXScreen=getWidth()/2;
 		double midYScreen=getHeight()/2;
 		GOval outerCircle= new GOval (	midXScreen-LASTCIRCLERADIUS,midYScreen-LASTCIRCLERADIUS,
-									  	midXScreen+LASTCIRCLERADIUS,midYScreen+LASTCIRCLERADIUS);
+									  	2*LASTCIRCLERADIUS,2*LASTCIRCLERADIUS);
 		outerCircle.setFilled(true);
 		outerCircle.setColor(Color.RED);
 		GOval midCircle= new GOval (	midXScreen-MIDCIRCLERADIUS,midYScreen-MIDCIRCLERADIUS,
-										midXScreen+MIDCIRCLERADIUS,midYScreen+MIDCIRCLERADIUS);
+										2*MIDCIRCLERADIUS,2*MIDCIRCLERADIUS);
 		midCircle.setFilled(true);
 		midCircle.setColor(Color.WHITE);
 		GOval innerCircle= new GOval (	midXScreen-INNERCIRCLERADIUS,midYScreen-INNERCIRCLERADIUS,
-										midXScreen+INNERCIRCLERADIUS,midYScreen+INNERCIRCLERADIUS);
+										2*INNERCIRCLERADIUS,2*INNERCIRCLERADIUS);
 		innerCircle.setFilled(true);
 		innerCircle.setColor(Color.RED);
 		add(outerCircle);
