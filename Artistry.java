@@ -47,8 +47,7 @@ public class Artistry extends GraphicsProgram {
 			artIsRandom.setFont("SansSerif-36");
 			artIsRandom.setColor(Color.RED);
 			add(artIsRandom);
-			pause (SMALLPAUSE);
-		}	
+		}
 	}
 
 	private int requestNumberOfShapes (int a) {
