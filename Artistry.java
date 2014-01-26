@@ -111,7 +111,7 @@ public class Artistry extends GraphicsProgram {
 
 	private RandomGenerator rgen = RandomGenerator.getInstance();
 
-	private final static int SMALLNUMBERLIMIT=10;
+	private final static int SMALLNUMBERLIMIT=1;
 	private final static int SMALLPAUSE=20;
 	private final static int LARGEPAUSE=1000;	
 
