@@ -17,7 +17,7 @@ public class Artistry extends GraphicsProgram {
 	private static final double PAUSE_TIME = 1000.0 / 48;
 
 	/* The maximum horizontal velocity of the ball. */
-	private static final double MAX_SPEED = 3.0;
+	private static final double BALL_MAX_SPEED = 3.0;
 
 	/* Gravitational acceleration. */
 	private static final double GRAVITY = 0.125;
@@ -25,9 +25,20 @@ public class Artistry extends GraphicsProgram {
 	/* Elasticity. */
 	private static final double ELASTICITY = 0.75;
 
-	/*provide number of balls */
-	private static final int NUMBER_OF_BALLS=4;
-
+	/* Wall width */
+	private static final double WALL_WIDTH=20;
+	
+	/* Wall Height */
+	private static final double WALL_HEIGHT=30;
+	
+	/* Wall Color */
+	
+	private static final Color WALL_COLOR=Color.black;
+	
+	/*Wall speed */
+	
+	private static final double WALL_SPEED=2.0;
+	
 	/* Allow for random generator */
 	private RandomGenerator rgen = RandomGenerator.getInstance();
 
@@ -38,14 +49,12 @@ public class Artistry extends GraphicsProgram {
 	
 	public void run() {
 			GOval ball1 = makeBall();
-			add(ball1);
 			GOval ball2 = makeBall();
-			add(ball2);
 			GOval ball3 = makeBall();
-			add(ball3);
 			GOval ball4 = makeBall();
-			add(ball4);
-			bounceBall(ball1,ball2,ball3,ball4);
+			GRect wall=  makeWall();
+			
+			bounceBallMoveWall(ball1,ball2,ball3,ball4,wall);
 			
 	}
 	/**
@@ -65,22 +74,43 @@ public class Artistry extends GraphicsProgram {
 		return result;
 	}
 
+	private GRect makeWall() {
+		double screenHeight=getHeight();
+		double screenWidth=getWidth();
+		double startX= screenWidth-WALL_WIDTH;
+		double startY=screenHeight-WALL_HEIGHT;
+		GRect result= new GRect(startX,startY,WALL_WIDTH,WALL_HEIGHT);
+		result.setFilled(true);
+		result.setColor(WALL_COLOR);
+		return result;
+	}
 	/**
 	 * Bounces the specified ball across the screen.
 	 * 
 	 * @param ball The ball to bounce.
 	 */
-	private void bounceBall(GOval ball1, GOval ball2, GOval ball3, GOval ball4) {
+	private void bounceBallMoveWall (GOval ball1, GOval ball2, GOval ball3, GOval ball4, GRect wall) {
 		/* Track the ball velocity. */
-		double dx1 = rgen.nextDouble(0,MAX_SPEED);
+		double dx1 = rgen.nextDouble(0,BALL_MAX_SPEED);
 		double dy1 = 0;
-		double dx2 = rgen.nextDouble(0,MAX_SPEED);
+		double dx2 = rgen.nextDouble(0,BALL_MAX_SPEED);
 		double dy2 = 0;
-		double dx3 = rgen.nextDouble(0,MAX_SPEED);
+		double dx3 = rgen.nextDouble(0,BALL_MAX_SPEED);
 		double dy3 = 0;
-		double dx4 = rgen.nextDouble(0,MAX_SPEED);
+		double dx4 = rgen.nextDouble(0,BALL_MAX_SPEED);
 		double dy4 = 0;
-
+		
+		double screenHeight=getHeight();
+		double screenWidth=getWidth();
+		double wallX= screenWidth-WALL_WIDTH;
+		double wallY=screenHeight-WALL_HEIGHT; 
+		
+		add(ball1);
+		add(ball2);
+		add(ball3);
+		add(ball4);
+		add(wall);
+		
 		/* Loop, simulating bouncing the ball across the screen.
 		 */
 		while (true) {
@@ -89,12 +119,14 @@ public class Artistry extends GraphicsProgram {
 			ball2.move(dx2, dy2);
 			ball3.move(dx3, dy3);
 			ball4.move(dx4, dy4);
+			wall.move(wallX, wallY);
 
 			/* Gravity accelerates the ball downward. */
 			dy1 += GRAVITY;
 			dy2 += GRAVITY;
 			dy3 += GRAVITY;
 			dy4 += GRAVITY;
+			wallX -= WALL_SPEED;
 
 			/* If the ball hit the ground and is still moving downward,
 			 * reflect it back up. The check for downward motion is
@@ -114,11 +146,29 @@ public class Artistry extends GraphicsProgram {
 			if (hasBallHitBottom(ball4) && dy4 > 0.0) {
 				dy4 *= -ELASTICITY;
 			}
-
+			
+			if (hasBallHitWall(ball1, wall)) {
+				dx1 *=-dx1;
+			}
+			if (hasBallHitWall(ball2, wall)) {
+				dx2 *=-dx2;
+			}
+			if (hasBallHitWall(ball3, wall)) {
+				dx3 *=-dx3;
+			}
+			if (hasBallHitWall(ball4, wall)) {
+				dx4 *=-dx4;
+			}
+			
 			pause(PAUSE_TIME);
 		}
 	}
-
+	/*Checks if ball has hit wall */
+	
+	private boolean hasBallHitWall (GOval ball, GRect wall) {
+		double ballX= ball.getX() + BALL_SIZE;
+		return ballX>= wall.getX();
+	}
 	/**
 	 * Returns whether the ball has hit the bottom of the screen.
 	 * 
