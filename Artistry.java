@@ -145,7 +145,6 @@ public class Artistry extends GraphicsProgram {
 			dy2 += GRAVITY;
 			dy3 += GRAVITY;
 			dy4 += GRAVITY;
-			wallX -= WALL_SPEED;
 
 			/* If the ball hit the ground and is still moving downward,
 			 * reflect it back up. The check for downward motion is
