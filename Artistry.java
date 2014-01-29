@@ -26,10 +26,10 @@ public class Artistry extends GraphicsProgram {
 	private static final double ELASTICITY = 0.75;
 
 	/* Wall width */
-	private static final double WALL_WIDTH=20;
+	private static final double WALL_WIDTH=50;
 	
 	/* Wall Height */
-	private static final double WALL_HEIGHT=30;
+	private static final double WALL_HEIGHT=70;
 	
 	/* Wall Color */
 	
@@ -77,8 +77,8 @@ public class Artistry extends GraphicsProgram {
 	private GRect makeWall() {
 		double screenHeight=getHeight();
 		double screenWidth=getWidth();
-		double startX= screenWidth-WALL_WIDTH;
-		double startY=screenHeight-WALL_HEIGHT;
+		double startX= 200;
+		double startY=200;
 		GRect result= new GRect(startX,startY,WALL_WIDTH,WALL_HEIGHT);
 		result.setFilled(true);
 		result.setColor(WALL_COLOR);
