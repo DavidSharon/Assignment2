@@ -23,7 +23,7 @@ public class Artistry extends GraphicsProgram {
 	private static final double GRAVITY = 0.125;
 
 	/* Elasticity. */
-	private static final double ELASTICITY = 1.25;
+	private static final double ELASTICITY = 0.75;
 
 	/*provide number of balls */
 	private static final int NUMBER_OF_BALLS=4;
@@ -37,13 +37,17 @@ public class Artistry extends GraphicsProgram {
 	 */
 	
 	public void run() {
-		for (int i=0; i < NUMBER_OF_BALLS; i++ ) {
-			GOval ball = makeBall();
-			add(ball);
-			bounceBall(ball);
-		}
+			GOval ball1 = makeBall();
+			add(ball1);
+			GOval ball2 = makeBall();
+			add(ball2);
+			GOval ball3 = makeBall();
+			add(ball3);
+			GOval ball4 = makeBall();
+			add(ball4);
+			bounceBall(ball1,ball2,ball3,ball4);
+			
 	}
-
 	/**
 	 * Creates and returns a ball to bounce across the screen.
 	 *  
@@ -66,27 +70,49 @@ public class Artistry extends GraphicsProgram {
 	 * 
 	 * @param ball The ball to bounce.
 	 */
-	private void bounceBall(GOval ball) {
+	private void bounceBall(GOval ball1, GOval ball2, GOval ball3, GOval ball4) {
 		/* Track the ball velocity. */
-		double dx = rgen.nextDouble(0,MAX_SPEED);
-		double dy = 0;
+		double dx1 = rgen.nextDouble(0,MAX_SPEED);
+		double dy1 = 0;
+		double dx2 = rgen.nextDouble(0,MAX_SPEED);
+		double dy2 = 0;
+		double dx3 = rgen.nextDouble(0,MAX_SPEED);
+		double dy3 = 0;
+		double dx4 = rgen.nextDouble(0,MAX_SPEED);
+		double dy4 = 0;
 
 		/* Loop, simulating bouncing the ball across the screen.
 		 */
 		while (true) {
 			/* Move the ball one step. */
-			ball.move(dx, dy);
+			ball1.move(dx1, dy1);
+			ball2.move(dx2, dy2);
+			ball3.move(dx3, dy3);
+			ball4.move(dx4, dy4);
 
 			/* Gravity accelerates the ball downward. */
-			dy += GRAVITY;
+			dy1 += GRAVITY;
+			dy2 += GRAVITY;
+			dy3 += GRAVITY;
+			dy4 += GRAVITY;
 
 			/* If the ball hit the ground and is still moving downward,
 			 * reflect it back up. The check for downward motion is
 			 * necessary to make sure that we don't get the ball stuck
 			 * in the ground.
 			 */
-			if (hasBallHitBottom(ball) && dy > 0.0) {
-				dy *= -ELASTICITY;
+			
+			if (hasBallHitBottom(ball1) && dy1 > 0.0) {
+				dy1 *= -ELASTICITY;
+			}
+			if (hasBallHitBottom(ball2) && dy2 > 0.0) {
+				dy2 *= -ELASTICITY;
+			}
+			if (hasBallHitBottom(ball3) && dy3 > 0.0) {
+				dy3 *= -ELASTICITY;
+			}
+			if (hasBallHitBottom(ball4) && dy4 > 0.0) {
+				dy4 *= -ELASTICITY;
 			}
 
 			pause(PAUSE_TIME);
