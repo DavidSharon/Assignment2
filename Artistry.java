@@ -66,7 +66,7 @@ public class Artistry extends GraphicsProgram {
 	private void signName() {
 		double screenHeight=getHeight();
 		double screenWidth=getWidth();
-		GLabel name = new GLabel ("David Sharon",screenWidth-1,screenHeight-1 );
+		GLabel name = new GLabel ("David Sharon",screenWidth-10,screenHeight-10 );
 		add(name);
 	}
 	/**
