@@ -36,11 +36,11 @@ public class Artistry extends GraphicsProgram {
 	
 	/* Wall Color */
 	
-	private static final Color WALL_COLOR= Color.green;
+	private static final Color WALL_COLOR= Color.black;
 	
 	/*Wall pixel speed */
 	
-	private static final double WALL_SPEED= 10.0;
+	private static final double WALL_SPEED= 2.0;
 	
 	/* Allow for random generator */
 	private RandomGenerator rgen = RandomGenerator.getInstance();
