@@ -26,10 +26,10 @@ public class Artistry extends GraphicsProgram {
 	private static final double ELASTICITY = 0.75;
 
 	/* Wall width */
-	private static final double WALL_WIDTH=100;
+	private static final double WALL_WIDTH=10;
 	
 	/* Wall Height */
-	private static final double WALL_HEIGHT=200;
+	private static final double WALL_HEIGHT=70;
 	
 	/* Wall Color */
 	
@@ -100,9 +100,10 @@ public class Artistry extends GraphicsProgram {
 		double dx4 = rgen.nextDouble(0,BALL_MAX_SPEED);
 		double dy4 = 0;
 		
-		double screenHeight=getHeight();
+	
 		double screenWidth=getWidth();
 		double wallX= screenWidth-WALL_WIDTH;
+		double screenHeight=getHeight();
 		double wallY=screenHeight-WALL_HEIGHT; 
 		
 		add(ball1);
