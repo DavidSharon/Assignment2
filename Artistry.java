@@ -26,10 +26,10 @@ public class Artistry extends GraphicsProgram {
 	private static final double ELASTICITY = 0.75;
 
 	/* Wall width */
-	private static final double WALL_WIDTH=50;
+	private static final double WALL_WIDTH=100;
 	
 	/* Wall Height */
-	private static final double WALL_HEIGHT=70;
+	private static final double WALL_HEIGHT=200;
 	
 	/* Wall Color */
 	
