@@ -100,10 +100,16 @@ public class Artistry extends GraphicsProgram {
 		double dx4 = rgen.nextDouble(0,BALL_MAX_SPEED);
 		double dy4 = 0;
 		
+		/*
 		double screenHeight=getHeight();
 		double screenWidth=getWidth();
 		double wallX= screenWidth-WALL_WIDTH;
 		double wallY=screenHeight-WALL_HEIGHT; 
+		*/
+		
+		double wallX= wall.getX();
+		double wallY=wall.getY();
+		
 		
 		add(ball1);
 		add(ball2);
