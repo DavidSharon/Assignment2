@@ -138,7 +138,7 @@ public class Artistry extends GraphicsProgram {
 			ball4.move(dx4, dy4);
 			
 			/*Move wall one step */
-			wall.move(wallX, wallY);
+			wall.move(-WALL_SPEED,0);
 
 			/* Gravity accelerates the ball downward. */
 			dy1 += GRAVITY;
