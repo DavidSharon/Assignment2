@@ -35,9 +35,9 @@ public class Artistry extends GraphicsProgram {
 	
 	private static final Color WALL_COLOR= Color.green;
 	
-	/*Wall speed */
+	/*Wall pixel speed */
 	
-	private static final double WALL_SPEED= 0.1;
+	private static final double WALL_SPEED= 10.0;
 	
 	/* Allow for random generator */
 	private RandomGenerator rgen = RandomGenerator.getInstance();
