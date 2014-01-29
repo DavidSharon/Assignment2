@@ -37,7 +37,7 @@ public class Artistry extends GraphicsProgram {
 	
 	/*Wall speed */
 	
-	private static final double WALL_SPEED=2.0;
+	private static final double WALL_SPEED=0.5;
 	
 	/* Allow for random generator */
 	private RandomGenerator rgen = RandomGenerator.getInstance();
@@ -100,16 +100,10 @@ public class Artistry extends GraphicsProgram {
 		double dx4 = rgen.nextDouble(0,BALL_MAX_SPEED);
 		double dy4 = 0;
 		
-		/*
 		double screenHeight=getHeight();
 		double screenWidth=getWidth();
 		double wallX= screenWidth-WALL_WIDTH;
 		double wallY=screenHeight-WALL_HEIGHT; 
-		*/
-		
-		double wallX= wall.getX();
-		double wallY=wall.getY();
-		
 		
 		add(ball1);
 		add(ball2);
@@ -125,6 +119,8 @@ public class Artistry extends GraphicsProgram {
 			ball2.move(dx2, dy2);
 			ball3.move(dx3, dy3);
 			ball4.move(dx4, dy4);
+			
+			/*Move wall one step */
 			wall.move(wallX, wallY);
 
 			/* Gravity accelerates the ball downward. */
@@ -154,16 +150,16 @@ public class Artistry extends GraphicsProgram {
 			}
 			
 			if (hasBallHitWall(ball1, wall)) {
-				dx1 *=-dx1;
+				dx1 *=-ELASTICITY;
 			}
 			if (hasBallHitWall(ball2, wall)) {
-				dx2 *=-dx2;
+				dx2 *=-ELASTICITY;
 			}
 			if (hasBallHitWall(ball3, wall)) {
-				dx3 *=-dx3;
+				dx3 *=-ELASTICITY;
 			}
 			if (hasBallHitWall(ball4, wall)) {
-				dx4 *=-dx4;
+				dx4 *=-ELASTICITY;
 			}
 			
 			pause(PAUSE_TIME);
