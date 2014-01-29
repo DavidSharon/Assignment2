@@ -40,7 +40,7 @@ public class Artistry extends GraphicsProgram {
 	
 	/*Wall pixel speed */
 	
-	private static final double WALL_SPEED= 2.0;
+	private static final double WALL_SPEED= 0.5;
 	
 	/* Allow for random generator */
 	private RandomGenerator rgen = RandomGenerator.getInstance();
