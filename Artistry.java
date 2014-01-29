@@ -33,7 +33,7 @@ public class Artistry extends GraphicsProgram {
 	
 	/* Wall Color */
 	
-	private static final Color WALL_COLOR=Color.black;
+	private static final Color WALL_COLOR= Color.green;
 	
 	/*Wall speed */
 	
@@ -77,8 +77,8 @@ public class Artistry extends GraphicsProgram {
 	private GRect makeWall() {
 		double screenHeight=getHeight();
 		double screenWidth=getWidth();
-		double startX= 200;
-		double startY=200;
+		double startX= screenWidth-WALL_WIDTH;
+		double startY=screenHeight-WALL_HEIGHT;
 		GRect result= new GRect(startX,startY,WALL_WIDTH,WALL_HEIGHT);
 		result.setFilled(true);
 		result.setColor(WALL_COLOR);
