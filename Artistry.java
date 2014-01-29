@@ -1,0 +1,244 @@
+/*
+ * File: BouncingBall.java
+ * ========================================================
+ * A program that simulates a bouncing ball
+ */
+import acm.program.*;
+import acm.graphics.*;
+import acm.util.*;
+import java.awt.*;
+
+public class Artistry extends GraphicsProgram {
+	
+	/* The size of the ball. */
+	private static final double BALL_SIZE = 50;
+
+	/* The amount of time to pause between frames (48fps). */
+	private static final double PAUSE_TIME = 1000.0 / 48;
+
+	/* The maximum horizontal velocity of the ball. */
+	private static final double MAX_SPEED = 3.0;
+
+	/* Gravitational acceleration. */
+	private static final double GRAVITY = 0.125;
+
+	/* Elasticity. */
+	private static final double ELASTICITY = 1.25;
+
+	/*provide number of balls */
+	private static final int NUMBER_OF_BALLS=4;
+
+	/* Allow for random generator */
+	private RandomGenerator rgen = RandomGenerator.getInstance();
+
+
+	/**
+	 * Creates and simulates bouncing a ball across the screen.
+	 */
+	
+	public void run() {
+		for (int i=0; i < NUMBER_OF_BALLS; i++ ) {
+			GOval ball = makeBall();
+			add(ball);
+			bounceBall(ball);
+		}
+	}
+
+	/**
+	 * Creates and returns a ball to bounce across the screen.
+	 *  
+	 * @return The ball that will be bounced.
+	 */
+	private GOval makeBall() {
+		double screenHeight=getHeight();
+		double screenWidth=getWidth();
+		double startX=rgen.nextDouble(0,screenWidth);
+		double startY=rgen.nextDouble(0,screenHeight);
+		GOval result = new GOval(startX, startY, BALL_SIZE, BALL_SIZE);
+		result.setFilled(true);
+		Color randColor=rgen.nextColor();
+		result.setColor(randColor);
+		return result;
+	}
+
+	/**
+	 * Bounces the specified ball across the screen.
+	 * 
+	 * @param ball The ball to bounce.
+	 */
+	private void bounceBall(GOval ball) {
+		/* Track the ball velocity. */
+		double dx = rgen.nextDouble(0,MAX_SPEED);
+		double dy = 0;
+
+		/* Loop, simulating bouncing the ball across the screen.
+		 */
+		while (true) {
+			/* Move the ball one step. */
+			ball.move(dx, dy);
+
+			/* Gravity accelerates the ball downward. */
+			dy += GRAVITY;
+
+			/* If the ball hit the ground and is still moving downward,
+			 * reflect it back up. The check for downward motion is
+			 * necessary to make sure that we don't get the ball stuck
+			 * in the ground.
+			 */
+			if (hasBallHitBottom(ball) && dy > 0.0) {
+				dy *= -ELASTICITY;
+			}
+
+			pause(PAUSE_TIME);
+		}
+	}
+
+	/**
+	 * Returns whether the ball has hit the bottom of the screen.
+	 * 
+	 * @param ball The ball to test.
+	 * @return Whether it has hit the bottom of the screen.
+	 */
+	private boolean hasBallHitBottom(GOval ball) {
+		/* Determine where the bottom of the ball is. */
+		double bottomY = ball.getY() + ball.getHeight();
+
+		/* Return whether it's below the bottom of the window. */
+		return bottomY >= getHeight();
+	}
+}
+
+
+
+
+
+
+
+
+
+/* File: Artistry.java
+ * Name:
+ * Section Leader:
+ * ==========================================================
+ * Replace these comments with a description of your program.
+ * Since this program is more freeform than the rest, tell us
+ * a bit about it in these comments!
+ */
+/*
+import acm.graphics.GOval;
+import acm.graphics.GRect;
+import acm.graphics.GLabel;
+import acm.program.*;
+import acm.util.*;
+import java.awt.Color;
+ */
+
+/* You fill this in.  Remember that you must have
+ * 
+ * 1. At least one filled object,
+ * 2. At least two different colors of objects, and
+ * 3. At least three different types of objects (not
+ *    counting the GLabel you use to sign your name).
+ * 
+ * Also, be sure to sign your name in the bottom-right
+ * corner of the canvas. Your name should be flush up
+ * against the bottom-right corner of the label. We
+ * recommend looking at the getDescent() method as a
+ * means for calculating where to position the label.
+ * 
+ * Didn't manage to get this to work!
+ * Maybe over my head? :)
+ */
+
+/*
+public class Artistry extends GraphicsProgram {
+	public void run() {
+		int x=0;
+		int numberOfShapes= introRequestParamaters(x);
+		generateShapesBasedOnParamaters(numberOfShapes);
+		signPicture();
+	}
+
+	private int introRequestParamaters(int a) {
+		explainArtIsRandom();
+		int userInput= requestNumberOfShapes(a);
+		cleanScreen();
+		return(userInput);
+	}
+
+	private void explainArtIsRandom() {
+		for (int i = 0; i < SMALLNUMBERLIMIT; i++) {
+			GLabel artIsRandom = new GLabel("Art is Random", 100, 75);
+			artIsRandom.setFont("SansSerif-36");
+			artIsRandom.setColor(Color.RED);
+			add(artIsRandom);
+		}
+	}
+
+	private int requestNumberOfShapes (int a) {
+		int userShapeInput= readInt ("Enter number of shapes your heart desires: ");
+		println ("I am going to give you 300x that number, i.e., "+ userShapeInput*300);
+		pause(LARGEPAUSE*2);
+		cleanScreen();
+		return (userShapeInput*300);
+	}
+
+	private void generateShapesBasedOnParamaters(int shapes) {
+		int screenWidth =getWidth();
+		int screenHeight= getHeight();
+		for (int i=0; i<shapes; i++){
+			createRect(screenWidth,screenHeight);
+			createOval(screenWidth,screenHeight);
+			pause(SMALLPAUSE);
+		}
+	}
+
+	private void createRect(int x,int y) {
+		int startRectX= rgen.nextInt(x);
+		int startRectY= rgen.nextInt(y);
+		int endRectX= rgen.nextInt(x);
+		int endRectY= rgen.nextInt(y);
+		GRect rect= new GRect(startRectX,startRectY,endRectX,endRectY);
+		rect.setFilled(true);
+		Color rectColor= rgen.nextColor();
+		rect.setFillColor(Color.BLUE);
+		add(rect);
+		return;
+	}
+
+	private void createOval(int x, int y) {
+		int startOvalX= rgen.nextInt(x);
+		int startOvalY= rgen.nextInt(y);
+		int endOvalX= rgen.nextInt(x);
+		int endOvalY= rgen.nextInt(y);
+		GOval oval= new GOval(startOvalX,startOvalY,endOvalX,endOvalY);
+		oval.setFilled(true);
+		oval.setFillColor(Color.BLUE);
+		add(oval);
+	}
+
+	private void signPicture() {
+		int screenWidth =getWidth();
+		int screenHeight= getHeight();
+		GLabel sign= new GLabel("David Sharon",screenWidth-50,screenHeight-10);
+		add(sign);
+	}
+
+	private void cleanScreen() {
+		int screenWidth =getWidth();
+		int screenHeight= getHeight();
+		GRect blankPage= new GRect(0, 0, screenWidth, screenHeight);
+		blankPage.setFilled(true);
+		blankPage.setColor(Color.WHITE);
+		add(blankPage);
+	}
+
+	private RandomGenerator rgen = RandomGenerator.getInstance();
+
+	private final static int SMALLNUMBERLIMIT=1;
+	private final static int SMALLPAUSE=20;
+	private final static int LARGEPAUSE=1000;	
+
+
+}
+ */
