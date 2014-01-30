@@ -20,7 +20,7 @@ public class Artistry extends GraphicsProgram {
 	private static final double PAUSE_TIME = 1000.0 / 48;
 
 	/* The maximum horizontal velocity of the ball. */
-	private static final double BALL_MAX_SPEED = 3.0;
+	private static final double BALL_MAX_SPEED = 7.0;
 
 	/* Gravitational acceleration. */
 	private static final double GRAVITY = 0.125;
