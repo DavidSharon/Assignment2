@@ -28,7 +28,7 @@ public class FixingBrokenJava extends ConsoleProgram {
 		int value = readInput(0);
 		
 		/* Check whether or not it is prime. */
-		if (isPrime(value)) {
+		if (isPrime(value)==true) {
 			println(value + " is prime.");
 		} else {
 			println(value + " is composite.");
@@ -65,9 +65,9 @@ public class FixingBrokenJava extends ConsoleProgram {
 		int userInput = readInt("Enter an integer greater than 1: ");
 		
 		/* If the value wasn't greater than one, reprompt. */
-		while (userInput < 1) {
-			println("Please enter a positive integer.");
-			userInput = readInt("Enter a positive integer: ");
+		while (userInput <= 1) {
+			println("Please enter a positive integer greater than 1.");
+			userInput = readInt("Enter the new integer: ");
 		}
 		
 		return userInput;
