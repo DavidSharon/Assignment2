@@ -47,7 +47,7 @@ public class FixingBrokenJava extends ConsoleProgram {
 		 * cleanly divide the number, we return that the number is
 		 * composite.
 		 */
-		for (int divisor = value-1; divisor <= 2; divisor--) {
+		for (int divisor = value-1; divisor >= 2; divisor--) {
 			if (value % divisor == 0) {
 				return false;
 			}
